@@ -87,7 +87,7 @@ var query = new GraphQLObjectType({
 });
 ```
 
-### Step3 - serve
+#### Step3 - serve
 ```
 var schema = new GraphQLSchema({
     query: query,
