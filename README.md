@@ -15,23 +15,27 @@ Reference(https://www.slideshare.net/deview/112rest-graph-ql-relay)
     * DELETE DATA
 
 ### GraphQL Type (http://graphql.org/graphql-js/type/)
-  * GraphQLSchema
+* GraphQL Schema
     * query
     * mutation
-  * GraphQLObjectType
-    * name : String
-    * fields : [...]
-        * type : GraphQLOutputType
-        * resolve : GraphQLResolveFn(source,args,context,info)=>{}
-  * GraphQLNonNull(GraphQL/Custom Data Type)
-  * GraphQL Data Type
-      * GraphQLBoolean
-      * GraphQLFloat
-      * GraphQLID
-      * GraphQLInt
-      * GraphQLList(GraphQL/Custom Data Type)
-      * GraphQLString
-      * GraphQLEnumType
+* GraphQL Scalars
+    * GraphQLInt
+    * GraphQLFloat
+    * GraphQLString
+    * GraphQLBoolean
+    * GraphQLID
+* GraphQL Data Type
+    * [GraphQLObjectType](http://graphql.org/graphql-js/type/#examples)
+        * name : String
+        * fields : {...}
+            * type : GraphQLOutputType
+            * ?resolve : GraphQLResolveFn(source,args,context,info)=>{}
+    * [GraphQLInterfaceType](http://graphql.org/graphql-js/type/#example-2)
+    * [GraphQLUnionType](http://graphql.org/graphql-js/type/#example-3)
+    * [GraphQLEnumType](http://graphql.org/graphql-js/type/#example-4)
+    * [GraphQLInputObjectType](http://graphql.org/graphql-js/type/#example-5)
+    * [GraphQLList](http://graphql.org/graphql-js/type/#example-6)(GraphQL/Custom Data Type)
+    * [GraphQLNonNull](http://graphql.org/graphql-js/type/#example-7)(GraphQL/Custom Data Type)
 
 <br/>
 
