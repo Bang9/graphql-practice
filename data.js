@@ -1,0 +1,22 @@
+exports.users = [
+    {
+        id:'0',
+        name:"KANG",
+        age:24,
+    },
+    {
+        id:'1',
+        name:'Kim',
+        age:18,
+    },
+    {
+        id:'2',
+        name:'Lyu',
+        age:27,
+    },
+    {
+        id:'3',
+        name:'Lee',
+        age:22,
+    },
+]
