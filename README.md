@@ -7,22 +7,6 @@ Reference(https://www.slideshare.net/deview/112rest-graph-ql-relay)
 * **TO DO**
     * Relay
 
-### GraphiQL
-> **You can test your query here** (http://localhost:4000/graphql)
-> ```
-> var express = require('express');
-> var graphqlHTTP = require('express-graphql');
->  
-> var app = express();
-> app.use('/graphql',graphqlHTTP({
->     schema:schema,
->     pretty:true,
->     graphiql:true,
-> }));
->  
-> app.listen(4000);
-> ```
-
 ### GraphQL Basics
 * Query
     * GET DATA
@@ -39,18 +23,20 @@ Reference(https://www.slideshare.net/deview/112rest-graph-ql-relay)
     * fields : [...]
         * type : GraphQLOutputType
         * resolve : GraphQLResolveFn(source,args,context,info)=>{}
-  * GraphQLNonNull(GraphQL Data Type)
+  * GraphQLNonNull(GraphQL/Custom Data Type)
   * GraphQL Data Type
       * GraphQLBoolean
       * GraphQLFloat
       * GraphQLID
       * GraphQLInt
-      * GraphQLList(Data Type)
+      * GraphQLList(GraphQL/Custom Data Type)
       * GraphQLString
       * GraphQLEnumType
 
 <br/>
+
 ***
+
 <br/>
 
 ## How to make Query
@@ -163,3 +149,19 @@ query {
 }
 */
 ```
+
+#### GraphiQL
+> **You can test your query here** (http://localhost:4000/graphql)
+> ```
+> var express = require('express');
+> var graphqlHTTP = require('express-graphql');
+>  
+> var app = express();
+> app.use('/graphql',graphqlHTTP({
+>     schema:schema,
+>     pretty:true,
+>     graphiql:true,
+> }));
+>  
+> app.listen(4000);
+> ```
