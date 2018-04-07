@@ -1,8 +1,10 @@
 var express = require('express');
 var graphqlHTTP = require('express-graphql');
+var fs = require('fs');
 var {graphql, GraphQLSchema, GraphQLObjectType, GraphQLNonNull, GraphQLString, GraphQLInt, GraphQLList} = require('graphql');
 
-var {users} = require('./data');
+var {callQuery,callMutation} = require('./call');
+var users = require('./data');
 
 var userType = new GraphQLObjectType({
     name:'User',
@@ -53,8 +55,13 @@ var mutation = new GraphQLObjectType({
                 age:{ type: GraphQLInt }
             },
             resolve: (obj,args)=>{
-                var {name,age} = args;
+                var {name,age,id} = args;
+
                 //add to user in DB
+                var users = JSON.parse(fs.readFileSync('data.json').toString());
+                users.push({name,age,id});
+                fs.writeFile('data.json', JSON.stringify(users));
+                return {name,age,id};
             }
         }
     }
@@ -73,3 +80,27 @@ app.use('/graphql',graphqlHTTP({
 }));
 app.listen(4000);
 console.log('app running on port:4000');
+
+var query = `{
+    allUser {
+        name
+        age
+    }
+}`
+
+var mutation = `mutation($id:String, $name:String, $age:Int) {
+  createUser(id:$id, name:$name, age:$age) {
+    id
+    age
+    name
+  }
+}`
+
+var variables = (id,name,age) => {
+    return {
+        id,name,age
+    }
+}
+
+callQuery('http://localhost:4000/graphql',query);
+callMutation('http://localhost:4000/graphql',mutation, variables("1","Kim",32));
